@@ -1,6 +1,8 @@
 #include<iostream>
 #include<string>
 using namespace std;
+int cont=0;
+const int Max=100;
 
 struct Producto{
 	string nombre;
@@ -11,13 +13,36 @@ struct Venta_producto{
 	int idVenta;
 	string producto;
 	int cantidad;
-	float oPrecio_Total;
+	float Precio_Total;
 };
+
+Producto Cantidad[Max];
+
+void Registro_de_producto(Producto Cantidad[], int &cont){
+	cout << "==========================================================" << endl;
+    cout << "                REGISTRO DE PRODUCTO" << endl;
+    cout << "==========================================================" << endl;
+    cout<<endl;
+    cout<<"Ingrese el nombre del producto: "<<endl;
+    cout<<cont+1<<".-: ";
+	cin.ignore();
+    getline(cin,Cantidad[cont].nombre);
+    cout<<endl;
+    
+    cout<<"Ingrese el precio del producto: ";
+    cin>>Cantidad[cont].precio;
+    
+    cont++;
+    cout<<"--------------------Producto agregado-----------------------"<<endl;
+	cout<<endl;
+}
+
 
 int main(){
 	char eleccion;
+	
 	cout << "==========================================================" << endl;
-    cout << "            INVENTARIO DE PRODUCTOS Y VENTAS (MD)" << endl;
+    cout << "          INVENTARIO DE PRODUCTOS Y VENTAS (MD)" << endl;
     cout << "==========================================================" << endl;
     
     do{
@@ -26,11 +51,64 @@ int main(){
 		cout<<"c) Buscar un producto por nombre " <<endl;
 		cout<<"d) Actualizar los datos de un producto "<<endl;
 		cout<<"e) Eliminar un producto "<<endl;
-    	cout<<"f) Registrar una venta "<<endl;
+		cout<<"f) Registrar una venta "<<endl;
 		cout<<"g) Listar las ventas realizadas " <<endl;
 		cout<<"h) Calcular el total de ventas realizadas "<<endl;
 		cout<<"s) Salir del programa"<<endl;
+		cout<<"Seleccione una alternativa: ";
 		cin>> eleccion;
+		cout<<endl;
 		
-		}while (eleccion != 's');
+		switch (eleccion) {
+			case 'a':{
+				Registro_de_producto(Cantidad, cont);
+				break;
+			}
+				
+			case 'b':{
+				break;
+			}
+			
+			case 'c':{
+				break;
+			}
+				
+			case 'd':{
+				break;
+			}
+			
+			case 'e':{
+				break;
+			}
+			
+			case 'f':{
+				break;
+			}
+				
+			case 'g':{
+				break;
+			}
+			
+			case 'h':{
+				break;
+			}
+				
+			case 's':{
+				cout<<endl;
+				cout<<"Saliendo del programa ... ";
+				cout<<endl;
+				break;
+			}
+				
+			default:{
+				cout<<endl;
+				cout<<"-------Alternativa invalida--------"<<endl;
+				cout<<endl;
+				break;
+			}
+					
+		}
+	}while (eleccion != 's');
+	
+	return 0;
 }
