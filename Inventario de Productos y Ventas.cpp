@@ -19,7 +19,7 @@ struct Venta_producto{
 Producto Cantidad[Max];
 
 
-void Registro_de_producto(Producto Cantidad[], int &cont){
+void Registro_de_Producto(Producto Cantidad[], int &cont){
 	cout << "==========================================================" << endl;
     cout << "                REGISTRO DE PRODUCTO" << endl;
     cout << "==========================================================" << endl;
@@ -58,7 +58,6 @@ void Lista(Producto Cantidad[], int &cont){
 
 void Busqueda_Producto(Producto Cantidad[], int &cont){
 	
-    
 	if(cont !=0){
    	
 	string producto;
@@ -96,7 +95,36 @@ void Busqueda_Producto(Producto Cantidad[], int &cont){
     }
 }
     
-
+void Eliminar_Producto(Producto Cantidad[] ,int &cont){
+	if(cont!=0){
+		
+	int numero;
+	cout<<"==========================================================" << endl;
+    cout<<"                   ELIMINAR PRODUCTO" << endl;
+    cout<<"==========================================================" << endl;	
+    cout<<"Ingrese el numero de orden del producto: ";
+    cin.ignore();
+    cin>>numero;
+    
+	numero=numero-1;	
+	if(numero>=0 && numero<cont){
+		for(int i=numero;i<cont-1;i++){
+			Cantidad[i]=Cantidad[i+1];
+		}
+		cont --;
+		cout<<endl;
+	    cout<<"-------------------Producto eliminado---------------------"<<endl;
+	    cout<<endl;
+	}else{
+		cout<<"No hay registro de este numero de orden "<<endl;
+		cout<<endl;
+	}
+	}else { 
+	cout<<endl;
+    cout<<"No hay productos para eliminar!!"<<endl;
+	cout<<endl;
+    }
+}
 
 int main(){
 	char eleccion;
@@ -106,8 +134,11 @@ int main(){
     cout << "==========================================================" << endl;
     
     do{
+    	cout<<endl;
+    	cout<<"------------------------OPCIONES-------------------------"<<endl;
+    	cout<<endl;
     	cout<<"a) Registrar un nuevo producto "<<endl;
-    	cout<<"b) Listar los productos registrados "<<endl;
+    	cout<<"b) Lista de productos registrados "<<endl;
 		cout<<"c) Buscar un producto por nombre " <<endl;
 		cout<<"d) Actualizar los datos de un producto "<<endl;
 		cout<<"e) Eliminar un producto "<<endl;
@@ -118,10 +149,11 @@ int main(){
 		cout<<"Seleccione una alternativa: ";
 		cin>> eleccion;
 		cout<<endl;
+		system("cls");
 		
 		switch (eleccion) {
 			case 'a':{
-				Registro_de_producto(Cantidad, cont);
+				Registro_de_Producto(Cantidad, cont);
 				break;
 			}
 				
@@ -140,6 +172,7 @@ int main(){
 			}
 			
 			case 'e':{
+				Eliminar_Producto(Cantidad, cont);
 				break;
 			}
 			
