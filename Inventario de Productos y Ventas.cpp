@@ -45,8 +45,11 @@ void Lista(Producto Cantidad[], int &cont){
     cout << "==========================================================" << endl;
     if(cont!=0){
     	for (int i = 0; i < cont; i++){
-            cout << i + 1 <<".- Nombre:"<<Cantidad [i].nombre<<endl;
-			cout<<"Precio: "<<Cantidad [i].precio<<endl;
+            cout << i + 1 <<".- Nombre:";
+			cout<<Cantidad[i].nombre;
+			cout<<endl;
+			cout<<"Precio: ";
+			cout<<Cantidad[i].precio;
 			cout<<endl;
 	}
 	}else {
@@ -94,6 +97,47 @@ void Busqueda_Producto(Producto Cantidad[], int &cont){
 	cout<<endl;
     }
 }
+    
+void Actualizar_Producto(Producto Cantidad[] ,int &cont){
+	
+	if(cont!=0){
+		
+	string producto;
+    cout << "==========================================================" << endl;
+    cout << "                ACTUALIZADOR DE PRODUCTOS" << endl;
+    cout << "==========================================================" << endl;
+	cout<<"Ingrese el nombre del producto que desea actualizar: ";
+	cin.ignore();
+    getline(cin,producto);
+    cout<<endl;
+    
+    bool busqueda =false;
+    for(int i=0;i<cont;i++){
+		if(Cantidad[i].nombre==producto){
+			cout<<endl;
+			cout<<"Ingrese el nuevo nombre del producto: ";
+			getline(cin, Cantidad[i].nombre);
+			cout<<endl;
+			cout<<"Ingrese el nuevo precio del producto: ";
+			cin>>Cantidad[i].precio;
+			cout<<endl;
+			cout<<"-------------------Producto actualizado---------------------"<<endl;
+	    busqueda=true;
+	    break;
+	    }
+    }
+    	if(busqueda==false){
+		cout<<endl;
+		cout<<"-------------------Producto no encontrado---------------------"<<endl;
+		cout<<endl;
+	    }
+			
+	}else {
+    	cout<<endl;
+        cout << "No hay registro de productos!!" << endl;
+        cout<<endl;
+	    }
+    }
     
 void Eliminar_Producto(Producto Cantidad[] ,int &cont){
 	if(cont!=0){
@@ -168,6 +212,7 @@ int main(){
 			}
 				
 			case 'd':{
+				Actualizar_Producto(Cantidad, cont);
 				break;
 			}
 			
