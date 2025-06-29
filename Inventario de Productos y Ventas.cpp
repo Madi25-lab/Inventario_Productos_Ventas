@@ -18,6 +18,7 @@ struct Venta_producto{
 
 Producto Cantidad[Max];
 
+
 void Registro_de_producto(Producto Cantidad[], int &cont){
 	cout << "==========================================================" << endl;
     cout << "                REGISTRO DE PRODUCTO" << endl;
