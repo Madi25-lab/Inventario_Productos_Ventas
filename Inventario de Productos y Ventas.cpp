@@ -37,6 +37,23 @@ void Registro_de_producto(Producto Cantidad[], int &cont){
 	cout<<endl;
 }
 
+void Lista(Producto Cantidad[], int &cont){
+	cout << "==========================================================" << endl;
+    cout << "                LISTA DE PRODUCTOS" << endl;
+    cout << "==========================================================" << endl;
+    if(cont!=0){
+    	for (int i = 0; i < cont; i++){
+            cout << i + 1 <<".- Nombre:"<<Cantidad [i].nombre<<endl;
+			cout<<"Precio: "<<Cantidad [i].precio<<endl;
+			cout<<endl;
+	}
+	}else {
+    	cout<<endl;
+        cout << "No hay registro de productos!!" << endl;
+        cout<<endl;
+    }
+}
+
 
 int main(){
 	char eleccion;
@@ -66,6 +83,7 @@ int main(){
 			}
 				
 			case 'b':{
+				Lista(Cantidad, cont);
 				break;
 			}
 			
