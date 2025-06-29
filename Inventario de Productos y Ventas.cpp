@@ -34,6 +34,7 @@ void Registro_de_producto(Producto Cantidad[], int &cont){
     cin>>Cantidad[cont].precio;
     
     cont++;
+    cout<<endl;
     cout<<"--------------------Producto agregado-----------------------"<<endl;
 	cout<<endl;
 }
@@ -54,6 +55,47 @@ void Lista(Producto Cantidad[], int &cont){
         cout<<endl;
     }
 }
+
+void Busqueda_Producto(Producto Cantidad[], int &cont){
+	
+    
+	if(cont !=0){
+   	
+	string producto;
+    cout << "==========================================================" << endl;
+    cout << "                    BUSQUEDA DE PRODUCTO" << endl;
+    cout << "==========================================================" << endl;
+    cout<<"Ingrese el nombre del producto: ";
+    cin.ignore();
+    getline(cin,producto);
+    
+    bool busqueda=false;
+    for(int i=0;i<cont;i++){
+		if(Cantidad[i].nombre==producto){
+		cout<<endl;
+	    cout<<"-------------------Producto encontrado---------------------"<<endl;
+	    cout<<endl;
+	    cout<<"Nombre: "<<Cantidad[i].nombre<<endl;
+	    cout<<"Precio: "<<Cantidad[i].precio<<endl;
+	    cout<<endl;
+	    
+	    busqueda=true;
+	    break;
+	    }
+    }
+	if(busqueda==false){
+		cout<<endl;
+		cout<<"-------------------Producto no encontrado---------------------"<<endl;
+		cout<<endl;
+	    }
+	    
+    }else {
+	cout<<endl;
+    cout<<"No hay aun registro de productos para buscar!!"<<endl;
+	cout<<endl;
+    }
+}
+    
 
 
 int main(){
@@ -89,6 +131,7 @@ int main(){
 			}
 			
 			case 'c':{
+				Busqueda_Producto(Cantidad, cont);
 				break;
 			}
 				
