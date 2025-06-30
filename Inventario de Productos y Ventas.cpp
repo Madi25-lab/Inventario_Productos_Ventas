@@ -170,6 +170,56 @@ void Eliminar_Producto(Producto Cantidad[] ,int &cont){
     }
 }
 
+Venta_producto Venta[Max];
+int cantidadV;
+void Registro_Venta(Venta_producto Venta[], int &cantidadV, Producto Cantidad[], int &cont ){
+	
+	if (cont !=0){
+	string producto;
+	int aux;
+	cout << "==========================================================" << endl;
+    cout << "                REGISTRO DE VENTA" << endl;
+    cout << "==========================================================" << endl;
+    cout<<endl;
+    cout<<"Ingrese el nombre del producto: ";
+	cin.ignore();
+    getline(cin,producto);
+    cout<<endl;
+    
+    bool busqueda=false;
+    for(int i=0; i<cont; i++){
+			if(producto == Cantidad[i].nombre){
+				aux = i;
+				busqueda = true;
+				break;
+			}
+		}
+	if(busqueda==false){
+	cout<<"El producto no fue registrado!! "<<endl;
+	
+	}else{
+	cout<<"Ingrese la cantidad vendida: ";
+	cin>>cantidadV;
+	Venta[cont].idVenta = cont+ 1;
+	Venta[cont].producto = Cantidad[aux].nombre;
+	Venta[cont].cantidad = cantidadV;
+	Venta[cont].Precio_Total = Cantidad[aux].precio*cantidadV;
+		
+    cout<<endl;
+    cout<<"--------------------Venta registrada-----------------------"<<endl;
+    cout << "Producto: " << Venta[cont].producto << endl;
+    cout << "Cantidad: " << Venta[cont].cantidad << endl;
+    cout << "Total: S/. " <<Venta[cont].Precio_Total << endl;
+	cout<<endl;
+	cantidadV++;
+    }
+}else {
+    	cout<<endl;
+        cout << "No hay registro de productos!!" << endl;
+        cout<<endl;
+	    }	
+}
+
 int main(){
 	char eleccion;
 	
@@ -222,6 +272,7 @@ int main(){
 			}
 			
 			case 'f':{
+				Registro_Venta(Venta, cantidadV, Cantidad, cont);
 				break;
 			}
 				
