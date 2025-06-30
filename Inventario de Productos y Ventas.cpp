@@ -3,6 +3,7 @@
 using namespace std;
 int cont=0;
 const int Max=100;
+int cant=0;
 
 struct Producto{
 	string nombre;
@@ -171,9 +172,9 @@ void Eliminar_Producto(Producto Cantidad[] ,int &cont){
 }
 
 Venta_producto Venta[Max];
-int cantidadV;
-void Registro_Venta(Venta_producto Venta[], int &cantidadV, Producto Cantidad[], int &cont ){
+void Registro_Venta(Venta_producto Venta[], int &cant, Producto Cantidad[], int cont ){
 	
+	int CV;
 	if (cont !=0){
 	string producto;
 	int aux;
@@ -199,25 +200,35 @@ void Registro_Venta(Venta_producto Venta[], int &cantidadV, Producto Cantidad[],
 	
 	}else{
 	cout<<"Ingrese la cantidad vendida: ";
-	cin>>cantidadV;
-	Venta[cont].idVenta = cont+ 1;
-	Venta[cont].producto = Cantidad[aux].nombre;
-	Venta[cont].cantidad = cantidadV;
-	Venta[cont].Precio_Total = Cantidad[aux].precio*cantidadV;
+	cin>>CV;
+	Venta[cant].idVenta = cant+ 1;
+	Venta[cant].producto = Cantidad[aux].nombre;
+	Venta[cant].cantidad = CV;
+	Venta[cant].Precio_Total = Cantidad[aux].precio*CV;
 		
-    cout<<endl;
     cout<<"--------------------Venta registrada-----------------------"<<endl;
-    cout << "Producto: " << Venta[cont].producto << endl;
-    cout << "Cantidad: " << Venta[cont].cantidad << endl;
-    cout << "Total: S/. " <<Venta[cont].Precio_Total << endl;
 	cout<<endl;
-	cantidadV++;
-    }
+	
+ cant++;   }
 }else {
     	cout<<endl;
         cout << "No hay registro de productos!!" << endl;
         cout<<endl;
 	    }	
+}
+
+void Lista_ventas(Venta_producto Venta[], int &cant){
+	cout << "==========================================================" << endl;
+    cout << "                LISTA DE VENTAS" << endl;
+    cout << "==========================================================" << endl;
+    	for (int i = 0; i < cant; i++){
+    		cout<<endl;
+    		cout<<"ID venta: "<< Venta[i].idVenta <<endl;
+            cout << "Producto: " << Venta[i].producto << endl;
+			cout << "Cantidad: " << Venta[i].cantidad << endl;
+			cout << "Total: S/. " <<Venta[i].Precio_Total << endl;
+			cout<<endl;
+}
 }
 
 int main(){
@@ -237,7 +248,7 @@ int main(){
 		cout<<"d) Actualizar los datos de un producto "<<endl;
 		cout<<"e) Eliminar un producto "<<endl;
 		cout<<"f) Registrar una venta "<<endl;
-		cout<<"g) Listar las ventas realizadas " <<endl;
+		cout<<"g) Lista de ventas realizadas " <<endl;
 		cout<<"h) Calcular el total de ventas realizadas "<<endl;
 		cout<<"s) Salir del programa"<<endl;
 		cout<<"Seleccione una alternativa: ";
@@ -272,11 +283,12 @@ int main(){
 			}
 			
 			case 'f':{
-				Registro_Venta(Venta, cantidadV, Cantidad, cont);
+				Registro_Venta(Venta, cant, Cantidad, cont);
 				break;
 			}
 				
 			case 'g':{
+				Lista_ventas(Venta, cant);
 				break;
 			}
 			
