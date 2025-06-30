@@ -205,7 +205,8 @@ void Registro_Venta(Venta_producto Venta[], int &cant, Producto Cantidad[], int 
 	Venta[cant].producto = Cantidad[aux].nombre;
 	Venta[cant].cantidad = CV;
 	Venta[cant].Precio_Total = Cantidad[aux].precio*CV;
-		
+	
+	cout<<endl;	
     cout<<"--------------------Venta registrada-----------------------"<<endl;
 	cout<<endl;
 	
@@ -218,6 +219,7 @@ void Registro_Venta(Venta_producto Venta[], int &cant, Producto Cantidad[], int 
 }
 
 void Lista_ventas(Venta_producto Venta[], int &cant){
+	if(cant!=0){
 	cout << "==========================================================" << endl;
     cout << "                LISTA DE VENTAS" << endl;
     cout << "==========================================================" << endl;
@@ -229,7 +231,34 @@ void Lista_ventas(Venta_producto Venta[], int &cant){
 			cout << "Total: S/. " <<Venta[i].Precio_Total << endl;
 			cout<<endl;
 }
+    }else{	
+        cout<<endl;
+        cout << "No hay registro de ventas!!" << endl;
+        cout<<endl;
+    }
 }
+
+void Total_Ventas(Venta_producto Venta[], int &cant){
+	
+	if(cant!=0){
+		cout << "==========================================================" << endl;
+        cout << "                TOTAL DE VENTAS" << endl;
+        cout << "==========================================================" << endl;
+		
+		float total = 0;
+	
+		for(int i=0; i<cant; i++){
+			total= total+ Venta[i].Precio_Total;
+		}
+		cout<<"Venta total: S/."<<total<<endl;
+	
+	}else{	
+        cout<<endl;
+        cout << "No hay registro de ventas!!" << endl;
+        cout<<endl;
+    }
+}
+    
 
 int main(){
 	char eleccion;
@@ -293,6 +322,7 @@ int main(){
 			}
 			
 			case 'h':{
+				Total_Ventas(Venta, cant);
 				break;
 			}
 				
